@@ -1,0 +1,19 @@
+# Rust build output and generated distribution artifacts
+/target/
+/dist/
+
+# Local runtime/configuration data
+*.log
+*.log.*
+.env
+.env.*
+!.env.example
+*.bak
+
+# Local editor and operating-system files
+.vscode/
+.idea/
+*.user
+*.suo
+Thumbs.db
+Desktop.ini

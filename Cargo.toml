@@ -1,0 +1,28 @@
+[package]
+name = "startup-app-manager"
+version = "0.1.0"
+edition = "2021"
+description = "Quan ly app/service tu khoi dong cung Windows, keepalive va tu hoi sinh"
+
+[dependencies]
+native-windows-gui = { version = "1.0.13", default-features = false, features = ["tray-notification", "menu", "message-window", "list-view", "file-dialog", "textbox", "combobox", "notice", "high-dpi", "cursor"] }
+serde = { version = "1", features = ["derive"] }
+toml = "1"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_JobObjects",
+    "Win32_System_Threading",
+    "Win32_UI_WindowsAndMessaging",
+] }
+winreg = "0.56"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
